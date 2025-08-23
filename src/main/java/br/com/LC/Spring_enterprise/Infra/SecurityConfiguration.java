@@ -14,7 +14,9 @@ public class SecurityConfiguration {
 
     @Bean
     public UserDetailsService registerUsuaryData(){
-        UserDetails usuaryOne = User.builder().username("lucascrippa@teste.com.br").password("{noop} Mortadela").build();
+        UserDetails usuaryOne = User.builder()
+                .username("lucascrippa@teste.com.br")
+                .password("{noop}Mortadela").build();
         return  new InMemoryUserDetailsManager(usuaryOne);
     }
 
