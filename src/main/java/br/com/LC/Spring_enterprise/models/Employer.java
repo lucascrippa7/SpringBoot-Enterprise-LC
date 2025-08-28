@@ -19,6 +19,7 @@ public class Employer {
     }
 
     public Employer(String cpf, Long id, String nome, Date dateOfBirth, Enum cargos, String phoneNumber, Date dateOfHire, Double salary) {
+        this.id = id;
         this.cpf = cpf;
         this.id = id;
         this.nome = nome;
