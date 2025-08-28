@@ -23,4 +23,16 @@ public class SecurityConfiguration {
     }
 
 
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(csrf -> csrf.disable()) // desabilita CSRF para testes via Postman
+                .authorizeHttpRequests(auth -> auth
+                        .anyRequest().authenticated() // todos os endpoints precisam de autenticação
+                )
+                .httpBasic(); // habilita Basic Auth
+        return http.build();
+    }
+
+
 }

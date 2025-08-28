@@ -1,15 +1,23 @@
 package br.com.LC.Spring_enterprise.models;
 
+import br.com.LC.Spring_enterprise.models.enums.Cargos;
+import jakarta.persistence.*;
+
 import java.util.Date;
 import java.util.Objects;
 
+
+@Entity
 public class Employer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
      private Long id;
      private String nome;
      private String cpf;
      private Date dateOfBirth;
-     private Enum cargos;
+    @Enumerated(EnumType.STRING)
+     private Cargos cargos;
      private String phoneNumber;
      private Date dateOfHire;
      private Date dismissalDate;
@@ -18,7 +26,7 @@ public class Employer {
     public Employer() {
     }
 
-    public Employer(String cpf, Long id, String nome, Date dateOfBirth, Enum cargos, String phoneNumber, Date dateOfHire, Double salary) {
+    public Employer(String cpf, Long id, String nome, Date dateOfBirth, Cargos cargos, String phoneNumber, Date dateOfHire, Double salary) {
         this.id = id;
         this.cpf = cpf;
         this.id = id;
@@ -46,7 +54,7 @@ public class Employer {
         return dateOfBirth;
     }
 
-    public Enum getCargos() {
+    public Cargos getCargos() {
         return cargos;
     }
 
@@ -70,7 +78,7 @@ public class Employer {
         this.nome = nome;
     }
 
-    public void setCargos(Enum cargos) {
+    public void setCargos(Cargos cargos) {
         this.cargos = cargos;
     }
 
