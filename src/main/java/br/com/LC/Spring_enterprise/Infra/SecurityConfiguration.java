@@ -2,6 +2,7 @@ package br.com.LC.Spring_enterprise.Infra;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -29,8 +30,7 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable()) // desabilita CSRF para testes via Postman
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().authenticated() // todos os endpoints precisam de autenticação
-                )
-                .httpBasic(); // habilita Basic Auth
+                ).httpBasic(Customizer.withDefaults()); // habilita Basic Auth
         return http.build();
     }
 
